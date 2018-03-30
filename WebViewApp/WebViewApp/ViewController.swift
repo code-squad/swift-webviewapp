@@ -7,42 +7,20 @@
 //
 
 import UIKit
+import WebKit
 
-class ViewController: UIViewController, UIWebViewDelegate {
+class ViewController: UIViewController {
 
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let url = URL(string: "https://m.baeminchan.com") else { return }
-        webView.loadRequest(URLRequest(url: url))
-        webView.delegate = self
+        webView.load(URLRequest(url: url))
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        print(#function)
-        print(webView, request, navigationType)
-        guard request.url != nil else { return false }
-        return true
-    }
-
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        print(#function)
-        print(webView)
-    }
-
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        print(#function)
-        print(webView)
-    }
-
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        print(#function)
-        print(webView, error)
     }
 
 }
