@@ -55,6 +55,26 @@
 ![시뮬레이터 화면](materials/step2_04.png)
 
 ---
+## Step3 (모바일 웹 페이지 로딩과 액션)
+### 요구사항
+- WKWebView 기반으로 커스텀 로딩을 결정하도록 개선하는 것이 목표로 한다.
+- readme.md 파일을 자신의 프로젝트에 대한 설명으로 변경한다.
+    - 단계별로 미션을 해결하고 리뷰를 받고나면 readme.md 파일에 주요 작업 내용(바뀐 화면 이미지, 핵심 기능 설명)과 완성 날짜시간을 기록한다.
+    - 실행한 화면을 캡처해서 readme.md 파일에 포함한다.
+
+### 프로그래밍 요구사항
+- UIWebView를 제거하고 대신 WKWebView로 대체한다.
+![WKWebView](materials/webapp-step3-pageloading.png)
+- 모바일 앱에서는 모바일 웹 popup을 감추도록 커스텀 페이지 로딩을 구현한다.
+    - WKUserScript 유저 스크립트 클래스를 활용해서 앞 단계에서 찾았던 팝업 태그를 감추는 JS 스크립트를 구현한다.
+    - 힌트. 팝업이 포함된 특정 태그를 찾아서 속성을 바꾸면 된다.
+
+### 결과
+#### UI
+![팝업 제거전 화면](materials/step1_01.png)
+![팝업 제거된 화면](materials/step3_01.png)
+
+---
 ## 중간에 고생했던 부분 / 기억할 부분 간단 정리
 - UIWebView 는 현재 Deprecated 되었다.
 - Security문제나 속도문제, JavaScript 이슈등을 보안하기 위해 앞으로는 대체재인 WebKit View를 사용해야 한다.
@@ -65,3 +85,5 @@
     - Nitro JS 엔진
     - Swipe 제스처 지원
     - 간편한 앱-웹페이지 통신 방식
+- WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+    - 3단계 진행시 위 속성에서 injectionTime은 Document가 올라온 전/후 중 하나를 선택할 수가 있다. 기존에 있는 Tag의 속성을 변경하는 것이기 때문에 End로 했어야했는데, .atDocumentStart로 설정해놓고 한참을 고생한 기억이...
