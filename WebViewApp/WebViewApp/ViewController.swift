@@ -14,27 +14,23 @@ class ViewController: UIViewController, WKNavigationDelegate {
     private weak var webView: WKWebView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        setWebView()
+        guard setWebView() else { return }
         guard let url = URL(string: "https://m.baeminchan.com") else { return }
         let urlRequest = URLRequest(url: url)
         self.webView.load(urlRequest)
     }
 
-    private func setWebView() {
+    private func setWebView() -> Bool {
         let webConfiguration = WKWebViewConfiguration()
         let contentController = WKUserContentController()
-        let source = """
-            var popup = document.querySelector('.app-download-popup');
-            if (popup != null) {
-                popup.style.display = 'none';
-            }
-            console.log("ttttt")
-        """
-        let userScript = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+        guard let jsFile = Bundle.main.path(forResource: "Injection", ofType: "js") else { return false }
+        guard let jsString = try? String(contentsOfFile: jsFile, encoding: String.Encoding.utf8) else { return false }
+        let userScript = WKUserScript(source: jsString, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
         contentController.addUserScript(userScript)
         webConfiguration.userContentController = contentController
         webView = WKWebView(frame: view.frame, configuration: webConfiguration)
         view.addSubview(webView)
+        return true
     }
 
     override func didReceiveMemoryWarning() {
