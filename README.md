@@ -48,11 +48,11 @@
 #### UI
 - 변경 전
 ![사파리 화면](materials/step2_01.png)
-![시뮬레이터 화면](materials/step2_02.png)
+![시뮬레이터 화면](materials/step1_02.png)
 
 - 변경 후
-![사파리 화면](materials/step2_03.png)
-![시뮬레이터 화면](materials/step2_04.png)
+![사파리 화면](materials/step2_02.png)
+![시뮬레이터 화면](materials/step2_03.png)
 
 ---
 ## Step3 (모바일 웹 페이지 로딩과 액션)
@@ -72,7 +72,26 @@
 ### 결과
 #### UI
 ![팝업 제거전 화면](materials/step1_01.png)
-![팝업 제거된 화면](materials/step3_01.png)
+![메인 팝업 제거된 화면(이벤트 팝업)](materials/step3_01.png)
+![모든 팝업 제거된 화면](materials/step1_02.png)
+
+---
+## Step4 (사파리 뷰컨트롤러)
+### 요구사항
+- 사파리 뷰컨트롤러를 활용해서 특정 페이지만 관리하는 것을 목표로 한다.
+- readme.md 파일을 자신의 프로젝트에 대한 설명으로 변경한다.
+    - 단계별로 미션을 해결하고 리뷰를 받고나면 readme.md 파일에 주요 작업 내용(바뀐 화면 이미지, 핵심 기능 설명)과 완성 날짜시간을 기록한다.
+    - 실행한 화면을 캡처해서 readme.md 파일에 포함한다.
+
+### 프로그래밍 요구사항
+- 내비게이션 액션에서 검색(Search.php)을 호출하는 경우에는 SafariViewController로 띄우도록 개선한다.
+- .slide-navi 속성을 가진 메인 메뉴를 누를 경우, 웹 상의 메뉴 링크 항목을 JSON 데이터로 스크립트 메시지 핸들러를 호출하도록 구현한다.
+- JSON으로 받은 메뉴 항목을 배열로 변경하고 로그를 출력한다.
+
+### 결과
+#### UI
+![메인 화면](materials/step1_02.png)
+![검색 화면](materials/step4_01.png)
 
 ---
 ## 중간에 고생했던 부분 / 기억할 부분 간단 정리
@@ -87,3 +106,6 @@
     - 간편한 앱-웹페이지 통신 방식
 - WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
     - 3단계 진행시 위 속성에서 injectionTime은 Document가 올라온 전/후 중 하나를 선택할 수가 있다. 기존에 있는 Tag의 속성을 변경하는 것이기 때문에 End로 했어야했는데, .atDocumentStart로 설정해놓고 한참을 고생한 기억이...
+- WKNavigationDelegate
+- SFSafariViewControllerDelegate
+- WKScriptMessageHandler
