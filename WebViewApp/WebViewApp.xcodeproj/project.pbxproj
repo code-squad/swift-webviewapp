@@ -101,11 +101,11 @@
 			children = (
 				8ECA5764206DF88900BD987F /* AppDelegate.swift */,
 				8ECA5766206DF88900BD987F /* ViewController.swift */,
+				8E6F6DC220722DCC00FCA6F6 /* Injection.js */,
 				8ECA5768206DF88900BD987F /* Main.storyboard */,
 				8ECA576B206DF88A00BD987F /* Assets.xcassets */,
 				8ECA576D206DF88A00BD987F /* LaunchScreen.storyboard */,
 				8ECA5770206DF88A00BD987F /* Info.plist */,
-				8E6F6DC220722DCC00FCA6F6 /* Injection.js */,
 			);
 			path = WebViewApp;
 			sourceTree = "<group>";

@@ -8,8 +8,9 @@
 
 import UIKit
 import WebKit
+import SafariServices
 
-class ViewController: UIViewController, WKNavigationDelegate {
+class ViewController: UIViewController, WKNavigationDelegate, SFSafariViewControllerDelegate {
 
     private weak var webView: WKWebView!
     override func viewDidLoad() {
@@ -29,12 +30,26 @@ class ViewController: UIViewController, WKNavigationDelegate {
         contentController.addUserScript(userScript)
         webConfiguration.userContentController = contentController
         webView = WKWebView(frame: view.frame, configuration: webConfiguration)
+        webView.navigationDelegate = self
         view.addSubview(webView)
         return true
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if navigationAction.request.description.contains("search.php") {
+            let webVC = SFSafariViewController(url: navigationAction.request.url!)
+            webVC.delegate = self
+            self.present(webVC, animated: true, completion: nil)
+        }
+        decisionHandler(.allow)
+    }
+
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        controller.dismiss(animated: true, completion: nil)
     }
 
 }
