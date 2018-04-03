@@ -16,7 +16,7 @@ class ViewController: UIViewController, WKNavigationDelegate, SFSafariViewContro
     override func viewDidLoad() {
         super.viewDidLoad()
         guard setWebView() else { return }
-        guard let url = URL(string: "https://m.baeminchan.com") else { return }
+        guard let url = URL(string: Keyword.baeminchanURL.value) else { return }
         let urlRequest = URLRequest(url: url)
         self.webView.load(urlRequest)
     }
@@ -24,10 +24,10 @@ class ViewController: UIViewController, WKNavigationDelegate, SFSafariViewContro
     private func setWebView() -> Bool {
         let webConfiguration = WKWebViewConfiguration()
         let contentController = WKUserContentController()
-        guard let jsFile = Bundle.main.path(forResource: "Injection", ofType: "js") else { return false }
+        guard let jsFile = Bundle.main.path(forResource: Keyword.jsFileName.value, ofType: Keyword.js.value) else { return false }
         guard let jsString = try? String(contentsOfFile: jsFile, encoding: String.Encoding.utf8) else { return false }
         let userScript = WKUserScript(source: jsString, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-        contentController.add(self, name: "menuLink")
+        contentController.add(self, name: Keyword.clickEvent.value)
         contentController.addUserScript(userScript)
         webConfiguration.userContentController = contentController
         webView = WKWebView(frame: view.frame, configuration: webConfiguration)
@@ -41,7 +41,7 @@ class ViewController: UIViewController, WKNavigationDelegate, SFSafariViewContro
     }
 
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if navigationAction.request.description.contains("search.php") {
+        if navigationAction.request.description.contains(Keyword.search.value) {
             let webVC = SFSafariViewController(url: navigationAction.request.url!)
             webVC.delegate = self
             self.present(webVC, animated: true, completion: nil)
@@ -56,7 +56,7 @@ class ViewController: UIViewController, WKNavigationDelegate, SFSafariViewContro
     }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        if(message.name == "menuLink") {
+        if(message.name == Keyword.clickEvent.value) {
             let value = message.body as? [String: String?]
             for key in (value?.keys)! {
                 let content: String = value?[key]! != nil ? value![key]!! : ""
