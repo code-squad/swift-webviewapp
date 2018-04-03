@@ -15,8 +15,7 @@ if (slide_navi != null) {
 }
 function callNative(target) {
     try {
-        webkit.messageHandlers.clickEvent.postMessage({title: target.getAttribute('value'),
-                                                    urlString: target.getAttribute('href')});
+        webkit.messageHandlers.clickEvent.postMessage({title: target.innerHTML, urlString: target.getAttribute('href')});
     } catch(err) {
         alert(err);
     }

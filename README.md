@@ -93,6 +93,9 @@
 ![메인 화면](materials/step1_02.png)
 ![검색 화면](materials/step4_01.png)
 
+#### Console
+![콘솔 화면](materials/step4_02.png)
+
 ---
 ## 중간에 고생했던 부분 / 기억할 부분 간단 정리
 - UIWebView 는 현재 Deprecated 되었다.
