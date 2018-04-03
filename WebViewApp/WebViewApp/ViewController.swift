@@ -44,8 +44,10 @@ class ViewController: UIViewController, WKNavigationDelegate, SFSafariViewContro
             let webVC = SFSafariViewController(url: navigationAction.request.url!)
             webVC.delegate = self
             self.present(webVC, animated: true, completion: nil)
+            decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
         }
-        decisionHandler(.allow)
     }
 
     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
