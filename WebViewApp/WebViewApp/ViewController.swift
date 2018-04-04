@@ -56,11 +56,11 @@ class ViewController: UIViewController, WKNavigationDelegate, SFSafariViewContro
     }
 
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        if(message.name == Keyword.clickEvent.value) {
-            let value = message.body as? [String: String?]
-            for key in (value?.keys)! {
-                let content: String = value?[key]! != nil ? value![key]!! : ""
-                print("\(key) : \(content)")
+        if message.name == Keyword.clickEvent.value {
+            guard let clickedData = message.body as? [String: String?] else { return }
+            clickedData.forEach {
+                let value = $0.value ?? ""
+                print("\($0.key) : \(value)")
             }
         }
     }
