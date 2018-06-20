@@ -1,9 +1,11 @@
 # swift-webviewapp
 
 # 완성화면
-- step1 : 2018.06.19
-<img src="./screenshot/step1.png" width="20%"> <img src="./screenshot/step1-1.png" width="20%">
+### step1 : 2018.06.19
+- <img src="./screenshot/step1.png" width="20%"> <img src="./screenshot/step1-1.png" width="20%">
 
+### step2 : 2018.06.20
+- <img src="./screenshot/step2.png" width="20%"> <img src="./screenshot/step2-1.png" width="18%">
 
 # 주요 구현/수정 사항
 ## Step1
@@ -16,6 +18,7 @@
   - 주의할 점
     - 서브클래싱 할 수 없다.
     - UIScrollView에 embed할 수 없다. 터치이벤트가 충돌날 수 있기 때문.
+    - Deprecated 됨.
 
 
 ## UIWebViewDelegate
@@ -67,3 +70,45 @@ webViewDidFinishLoad
 
 - **의문점**
   - 왜 메소드들은 여러번 불리는걸까...?
+
+## WKWebView
+
+- 구현방법1 : 델리게이트 사용
+```swift
+import UIKit
+import WebKit
+
+class ViewController: UIViewController, WKUIDelegate {
+
+    var webView: WKWebView!
+    let storeURL = URL(string: "https://m.baeminchan.com")
+
+    override func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        view = webView
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let myRequest = URLRequest(url: storeURL!)
+        webView.load(myRequest)
+    }
+}
+```
+
+- 구현방법2 : 스토리보드 사용
+```swift
+class ViewController: UIViewController {
+
+    @IBOutlet weak var webView: WKWebView!
+    let storeURL = URL(string: "https://m.baeminchan.com")
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let myRequest = URLRequest(url: storeURL!)
+        webView.load(myRequest)
+    }
+}
+```
