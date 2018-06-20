@@ -7,44 +7,33 @@
 //
 
 import UIKit
+import WebKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, WKUIDelegate {
 
-    @IBOutlet weak var webView: UIWebView!
+    var webView: WKWebView!
     let storeURL = URL(string: "https://m.baeminchan.com")
+
+    override func loadView() {
+        webView = WKWebView()
+        webView.uiDelegate = self
+        view = UIView()
+        view.backgroundColor = UIColor.white
+        view.addSubview(webView)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView.delegate = self
-        webView.loadRequest(URLRequest(url: storeURL!))
-        print(#function)
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        let myRequest = URLRequest(url: storeURL!)
+        self.webView.load(myRequest)
+
+        let safeArea = view.safeAreaLayoutGuide
+
+        self.webView.topAnchor.constraint(equalTo: safeArea.topAnchor).isActive = true
+        self.webView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor).isActive = true
+        self.webView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor).isActive = true
+        self.webView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive = true
     }
 
-    deinit {
-        webView.delegate = nil
-    }
-
-}
-
-extension ViewController: UIWebViewDelegate {
-
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        print(#function)
-        return true
-    }
-
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        print(#function)
-    }
-
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        print(#function)
-    }
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        print(#function)
-    }
 }
