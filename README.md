@@ -7,6 +7,9 @@
 ### step2 : 2018.06.20
 - <img src="./screenshot/step2.png" width="20%"> <img src="./screenshot/step2-1.png" width="18%">
 
+### step3 : 2018.06.21
+- <img src="./screenshot/step3.png" width="20%">
+
 # 주요 구현/수정 사항
 ## Step1
 - Safe Area이용하여 오토레이아웃 적용
