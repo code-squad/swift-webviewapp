@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FD2818B520DBA43F00545C35 /* injectionsource.js in Resources */ = {isa = PBXBuildFile; fileRef = FD2818B420DBA43F00545C35 /* injectionsource.js */; };
 		FD2E122420D8CB8D0060E927 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2E122320D8CB8D0060E927 /* AppDelegate.swift */; };
 		FD2E122620D8CB8D0060E927 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD2E122520D8CB8D0060E927 /* ViewController.swift */; };
 		FD2E122920D8CB8D0060E927 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD2E122720D8CB8D0060E927 /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FD2818B420DBA43F00545C35 /* injectionsource.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = injectionsource.js; sourceTree = "<group>"; };
 		FD2E122020D8CB8D0060E927 /* WebViewApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WebViewApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD2E122320D8CB8D0060E927 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FD2E122520D8CB8D0060E927 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 			children = (
 				FD2E122320D8CB8D0060E927 /* AppDelegate.swift */,
 				FD2E122520D8CB8D0060E927 /* ViewController.swift */,
+				FD2818B420DBA43F00545C35 /* injectionsource.js */,
 				FD2E122720D8CB8D0060E927 /* Main.storyboard */,
 				FD2E122A20D8CB8F0060E927 /* Assets.xcassets */,
 				FD2E122C20D8CB8F0060E927 /* LaunchScreen.storyboard */,
@@ -123,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD2E122E20D8CB8F0060E927 /* LaunchScreen.storyboard in Resources */,
+				FD2818B520DBA43F00545C35 /* injectionsource.js in Resources */,
 				FD2E122B20D8CB8F0060E927 /* Assets.xcassets in Resources */,
 				FD2E122920D8CB8D0060E927 /* Main.storyboard in Resources */,
 			);
