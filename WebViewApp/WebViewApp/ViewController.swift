@@ -9,6 +9,7 @@
 import UIKit
 import WebKit
 
+
 class ViewController: UIViewController, WKUIDelegate {
 
     let configuration = WKWebViewConfiguration()
@@ -20,11 +21,10 @@ class ViewController: UIViewController, WKUIDelegate {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
 
-        webView = WKWebView()
-        webView.uiDelegate = self
         configuration.userContentController = self.userContentController
-
         webView = WKWebView(frame: self.view.bounds, configuration: self.configuration)
+        webView.uiDelegate = self
+
         view.addSubview(webView)
         setConstraint()
 
@@ -58,3 +58,4 @@ class ViewController: UIViewController, WKUIDelegate {
 
 
 }
+
