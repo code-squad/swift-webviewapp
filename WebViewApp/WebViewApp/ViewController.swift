@@ -8,9 +8,9 @@
 
 import UIKit
 import WebKit
+import SafariServices
 
-
-class ViewController: UIViewController, WKUIDelegate {
+class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, SFSafariViewControllerDelegate {
 
     let configuration = WKWebViewConfiguration()
     let userContentController = WKUserContentController()
@@ -24,6 +24,7 @@ class ViewController: UIViewController, WKUIDelegate {
         configuration.userContentController = self.userContentController
         webView = WKWebView(frame: self.view.bounds, configuration: self.configuration)
         webView.uiDelegate = self
+        webView.navigationDelegate = self
 
         view.addSubview(webView)
         setConstraint()
@@ -33,17 +34,19 @@ class ViewController: UIViewController, WKUIDelegate {
         self.webView.load(myRequest)
     }
 
+
     private func makePopUpUnable() {
         let scriptURL = Bundle.main.path(forResource: "injectionsource", ofType: "js")
         var scriptContent = ""
         do {
             scriptContent = try String(contentsOfFile: scriptURL ?? "", encoding: String.Encoding.utf8)
+            let userScript = WKUserScript(source: scriptContent, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
+
+            userContentController.addUserScript(userScript)
         } catch let error {
             print("Cannot Load File\nError log:\(error)")
+            return
         }
-        let userScript = WKUserScript(source: scriptContent, injectionTime: .atDocumentEnd, forMainFrameOnly: false)
-
-        userContentController.addUserScript(userScript)
     }
 
     private func setConstraint() {
@@ -56,6 +59,23 @@ class ViewController: UIViewController, WKUIDelegate {
         self.webView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor).isActive = true
     }
 
+    // Search.php
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        let pageDescription = navigationAction.request.description
+
+        if pageDescription.contains("search.php") {
+            let safariViewController = SFSafariViewController(url: navigationAction.request.url!)
+            safariViewController.delegate = self
+            self.present(safariViewController, animated: true, completion: nil)
+            decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
+        }
+    }
+
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        print(#function)
+    }
 
 }
 
