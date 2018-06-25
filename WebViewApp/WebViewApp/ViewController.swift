@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import SafariServices
 
-class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, SFSafariViewControllerDelegate {
+class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, SFSafariViewControllerDelegate, WKScriptMessageHandler {
 
     let configuration = WKWebViewConfiguration()
     let userContentController = WKUserContentController()
@@ -22,6 +22,9 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, SFSa
         view.backgroundColor = UIColor.white
 
         configuration.userContentController = self.userContentController
+        userContentController.add(self, name: "slideMenu")
+        makePopUpUnable()
+
         webView = WKWebView(frame: self.view.bounds, configuration: self.configuration)
         webView.uiDelegate = self
         webView.navigationDelegate = self
@@ -29,7 +32,6 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, SFSa
         view.addSubview(webView)
         setConstraint()
 
-        makePopUpUnable()
         let myRequest = URLRequest(url: storeURL!)
         self.webView.load(myRequest)
     }
@@ -73,9 +75,12 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, SFSa
         }
     }
 
-    func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        print(#function)
-    }
+    // .slide-navi
+        public func userContentController(_ userContentController: WKUserContentController,
+                                          didReceive message: WKScriptMessage) {
+            guard message.name == "slideMenu" else { return }
+            print(message.body)
+        }
 
 }
 
