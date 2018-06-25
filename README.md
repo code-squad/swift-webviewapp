@@ -10,6 +10,34 @@
 ### step3 : 2018.06.21
 - <img src="./screenshot/step3.png" width="20%">
 
+### step4 : 2018.06.25
+- <img src="./screenshot/step4.png" width="20%">
+- 콘솔출력
+- ```
+  (
+        {
+        valueTitle = "\Ud648";
+        valueURL = "http://m.baeminchan.com/";
+    },
+        {
+        valueTitle = "\Ubca0\Uc2a4\Ud2b8";
+        valueURL = "http://m.baeminchan.com/best30/list.php";
+    },
+        {
+        valueTitle = "\Uc54c\Ub730\Uc1fc\Ud551";
+        valueURL = "http://m.baeminchan.com/promotion_c/list.php?cno=2160000";
+    },
+        {
+        valueTitle = "\Uc2e0\Uc0c1";
+        valueURL = "http://m.baeminchan.com/new/list.php";
+    },
+        {
+        valueTitle = "\Ube0c\Ub79c\Ub4dc\Uad00";
+        valueURL = "http://m.baeminchan.com/promotion/brand.php";
+    }
+  )
+  ```
+
 # 주요 구현/수정 사항
 ## Step1
 - Safe Area이용하여 오토레이아웃 적용
@@ -24,7 +52,7 @@
     - 서브클래싱 할 수 없다.
     - UIScrollView에 embed할 수 없다. 터치이벤트가 충돌날 수 있기 때문.
     - Deprecated 됨.
-
+    - WKWebView로 대체
 
 ## UIWebViewDelegate
 UIWebViewDelegate 메소드의 optional 메소드를 구현하여 웹의 콘텐츠가 로드되는 주기에 원하는 처리를 할 수 있다.
@@ -118,13 +146,32 @@ class ViewController: UIViewController {
 }
 ```
 
+### WKWebView의 델리게이트
+- WKUIDelegate : 자바스크립트 이벤트를 캐치하여 동작
+- WKNavigationDelegate : 페이지의 start, loading, finish, error의 이벤트를 캐치할 수 있으며 웹페이지의 전반적인 상황을 확인할 수 있음
+
 ## WKWebViewConfiguration
-> `configuration.userContentController = self.userContentController` 코드 한 줄에 따라 팝업을 unable하는 코드 인젝션이 성공하거나 실패했다.
 
 - 웹뷰를 초기화할때 사용하는 프로퍼티들의 콜렉션
 - 웹뷰가 처음 초기화될때만 사용할 수 있다. 웹뷰가 만들어지고(초기화되고)나서 이 클래스를 이용해서 웹뷰의 설정을 바꿀 수 없다.
 
+- processPool: 웹뷰의 컨텐츠 프로세스를 가져올 프로세스 풀
+  - 웹뷰가 초기화되면, 지정된 풀에서 새 웹 컨텐츠 프로세스가 만들어 지거나 해당 풀의 기존 프로세스가 사용됨.
+- websiteDataStore: 웹뷰에서 사용되는 웹사이트 데이터스토어
+  - 여기서 말하는 데이터란 쿠키, 캐시, WebSQL같은 영구적 데이터, IndexedDB 데이터베이스, 로컬 스토리지(사용자가 지우지 않는 이상 계속 브라우저에 남아있음- 자동 로그인)
+  - 웹뷰가 비영구적인 데이터스토어와 연관되어있으면, 파일시스템에 아무 데이터도 써지지 않는다. 이 프로퍼티(websiteDataStore)는 웹뷰에서의 private한 탐색(브라우징)을 구현한다.
+
+## WKNavigationAction
+- navigationType(WKNavigationType())
+- sourceFrame, targetFrame(WKFrameInfo())
+- request(URLRequest): 네비게이션이 리퀘스트
+- modifierFlags: The modifier keys that were in effect when the navigation was requested.
+
+
+
 ### 관련에러
+> `configuration.userContentController = self.userContentController` 코드 한 줄에 따라 팝업을 unable하는 코드 인젝션이 성공하거나 실패했다.
+
 - **Could not signal service com.apple.WebKit.WebContent: 113: Could not find specified service**
   - 처음에는 WKWebView()를 init할때 빈 init으로 객체를 만들어서 에러가 발생한다고 생각했는데,
   - 그게 아니라 객체가 하나만(한번만)만들어져서 load시키면 에러가 발생하지 않는다.
