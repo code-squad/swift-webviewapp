@@ -14,7 +14,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, SFSa
 
     let configuration = WKWebViewConfiguration()
     let userContentController = WKUserContentController()
-    let storeURL = URL(string: "https://m.baeminchan.com")
+    let storeURL = URL(string: ProgramDescription.storeURL.value)
     var webView: WKWebView!
 
     override func viewDidLoad() {
@@ -22,7 +22,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, SFSa
         view.backgroundColor = UIColor.white
 
         configuration.userContentController = self.userContentController
-        userContentController.add(self, name: "slideMenu")
+        userContentController.add(self, name: ProgramDescription.slideMenu.value)
         makePopUpUnable()
 
         webView = WKWebView(frame: self.view.bounds, configuration: self.configuration)
@@ -38,7 +38,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, SFSa
 
 
     private func makePopUpUnable() {
-        let scriptURL = Bundle.main.path(forResource: "injectionsource", ofType: "js")
+        let scriptURL = Bundle.main.path(forResource: ProgramDescription.injectionSource.value, ofType: ProgramDescription.js.value)
         var scriptContent = ""
         do {
             scriptContent = try String(contentsOfFile: scriptURL ?? "", encoding: String.Encoding.utf8)
@@ -65,7 +65,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, SFSa
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         let pageDescription = navigationAction.request.description
 
-        if pageDescription.contains("search.php") {
+        if pageDescription.contains(ProgramDescription.searchPHP.value) {
             let safariViewController = SFSafariViewController(url: navigationAction.request.url!)
             safariViewController.delegate = self
             self.present(safariViewController, animated: true, completion: nil)
@@ -78,7 +78,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate, SFSa
     // .slide-navi
         public func userContentController(_ userContentController: WKUserContentController,
                                           didReceive message: WKScriptMessage) {
-            guard message.name == "slideMenu" else { return }
+            guard message.name == ProgramDescription.slideMenu.value else { return }
             print(message.body)
         }
 
