@@ -13,6 +13,7 @@
 		FD2E122920D8CB8D0060E927 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD2E122720D8CB8D0060E927 /* Main.storyboard */; };
 		FD2E122B20D8CB8F0060E927 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FD2E122A20D8CB8F0060E927 /* Assets.xcassets */; };
 		FD2E122E20D8CB8F0060E927 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD2E122C20D8CB8F0060E927 /* LaunchScreen.storyboard */; };
+		FD3F63BD20E10550009A7A25 /* ProgramDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3F63BC20E10550009A7A25 /* ProgramDescription.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		FD2E122A20D8CB8F0060E927 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FD2E122D20D8CB8F0060E927 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FD2E122F20D8CB8F0060E927 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FD3F63BC20E10550009A7A25 /* ProgramDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgramDescription.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				FD2E122320D8CB8D0060E927 /* AppDelegate.swift */,
 				FD2E122520D8CB8D0060E927 /* ViewController.swift */,
+				FD3F63BC20E10550009A7A25 /* ProgramDescription.swift */,
 				FD2818B420DBA43F00545C35 /* injectionsource.js */,
 				FD2E122720D8CB8D0060E927 /* Main.storyboard */,
 				FD2E122A20D8CB8F0060E927 /* Assets.xcassets */,
@@ -140,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD2E122620D8CB8D0060E927 /* ViewController.swift in Sources */,
+				FD3F63BD20E10550009A7A25 /* ProgramDescription.swift in Sources */,
 				FD2E122420D8CB8D0060E927 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
