@@ -7,33 +7,16 @@
 //
 
 import UIKit
+import WebKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var webview: UIWebView!
+    @IBOutlet weak var webview: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        webview.delegate = self
+        
         guard let url = URL(string: "https://m.baeminchan.com") else { return }
         let request = URLRequest(url: url)
-        webview.loadRequest(request)
-    }
-}
-
-extension ViewController: UIWebViewDelegate {
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        print(#function)
-        print("webView : \(webView)")
-    }
-    
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        print(#function)
-        print("webView : \(webView)")
-    }
-    
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        print(#function)
-        print("webView : \(webView)")
-        print("error : \(error)")
+        webview.load(request)
     }
 }
