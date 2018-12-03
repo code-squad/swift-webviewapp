@@ -17,7 +17,6 @@ class ViewController: UIViewController {
         guard let url = URL(string: "https://m.baeminchan.com") else { return }
         let request = URLRequest(url: url)
         webview.loadRequest(request)
-        self.view.addSubview(webview)
     }
 }
 
