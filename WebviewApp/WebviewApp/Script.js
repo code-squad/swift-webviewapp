@@ -8,4 +8,9 @@ search.addEventListener('click', changeSearch );
 
 function changeSearch() {
     event.preventDefault();
+    try {
+    webkit.messageHandlers.scriptHandler.postMessage("searchBar");
+    } catch(error) {
+        alert(error);
+    }
 }

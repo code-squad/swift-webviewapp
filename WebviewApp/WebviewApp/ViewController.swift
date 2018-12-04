@@ -27,6 +27,7 @@ class ViewController: UIViewController {
         let userScript = WKUserScript(source: content, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
         let contentController = WKUserContentController()
         contentController.addUserScript(userScript)
+        contentController.add(self, name: "scriptHandler")
         webConfiguration.userContentController = contentController
         webview = WKWebView(frame: .zero, configuration: webConfiguration)
         view = webview
@@ -50,6 +51,16 @@ extension ViewController: WKUIDelegate {
         alertController.addAction(cancelAction)
         DispatchQueue.main.async {
             self.present(alertController, animated: true, completion: nil)
+        }
+    }
+}
+
+extension ViewController: WKScriptMessageHandler {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        // message.name = "scriptHandler" -> 위에 WKUserContentController()에 설정한 name
+        // message.body = "searchBar" -> 스크립트 부분에 webkit.messageHandlers.scriptHandler.postMessage(<<이부분>>)
+        if message.name == "scriptHandler" {
+            print("in swift")
         }
     }
 }
