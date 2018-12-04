@@ -12,14 +12,10 @@ import WebKit
 class ViewController: UIViewController {
     var webview: WKWebView!
     override func loadView() {
+        super.loadView()
+        
         let webConfiguration = WKWebViewConfiguration()
-        let source = """
-        var popup = document.querySelector('.app-download-popup');
-        if (popup != null) {
-            popup.style.display = 'none';
-        }
-        """
-        let userScript = WKUserScript(source: source, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        let userScript = WKUserScript(source: Script.popupDisable, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
         let contentController = WKUserContentController()
         contentController.addUserScript(userScript)
         webConfiguration.userContentController = contentController
