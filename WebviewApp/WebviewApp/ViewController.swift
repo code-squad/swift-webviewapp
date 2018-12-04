@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SafariServices
 
 class ViewController: UIViewController {
     var webview: WKWebView!
@@ -60,7 +61,9 @@ extension ViewController: WKScriptMessageHandler {
         // message.name = "scriptHandler" -> 위에 WKUserContentController()에 설정한 name
         // message.body = "searchBar" -> 스크립트 부분에 webkit.messageHandlers.scriptHandler.postMessage(<<이부분>>)
         if message.name == "scriptHandler" {
-            print("in swift")
+            guard let url = URL(string: Key.searchUrl) else { return }
+            let safariVC = SFSafariViewController(url: url)
+            present(safariVC, animated: true, completion: nil)
         }
     }
 }

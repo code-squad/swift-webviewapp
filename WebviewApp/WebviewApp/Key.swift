@@ -10,6 +10,7 @@ import Foundation
 
 struct Key {
     static let url = "https://m.baeminchan.com"
+    static let searchUrl = "https://m.baeminchan.com/search.php"
     static let alertTitle = "OK"
     static func alert(with message: String) -> String {
         return "alert('\(message)')"
