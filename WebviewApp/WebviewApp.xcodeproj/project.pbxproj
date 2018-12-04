@@ -14,6 +14,8 @@
 		4712439821B51BEB003036E3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4712439621B51BEB003036E3 /* LaunchScreen.storyboard */; };
 		471243A321B51BEB003036E3 /* WebviewAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471243A221B51BEB003036E3 /* WebviewAppTests.swift */; };
 		471243AE21B51BEB003036E3 /* WebviewAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471243AD21B51BEB003036E3 /* WebviewAppUITests.swift */; };
+		472CB4F621B65B450071EA34 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 472CB4F521B65B450071EA34 /* Script.js */; };
+		472CB4F821B660F50071EA34 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 472CB4F721B660F50071EA34 /* Key.swift */; };
 		8A00CBC22F922D199D1767A2 /* Pods_WebviewApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 122723E82AD0D69550ECA632 /* Pods_WebviewApp.framework */; };
 		D0A8C09608199D12A48643E5 /* Pods_WebviewAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 467DC91ECFDFB4BB4A57ED35 /* Pods_WebviewAppTests.framework */; };
 		D323C62AC1024C2D6F1B988D /* Pods_WebviewAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9E3C2D70C0CDE4EE72EB2CE /* Pods_WebviewAppUITests.framework */; };
@@ -54,6 +56,8 @@
 		471243A921B51BEB003036E3 /* WebviewAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebviewAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		471243AD21B51BEB003036E3 /* WebviewAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebviewAppUITests.swift; sourceTree = "<group>"; };
 		471243AF21B51BEB003036E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		472CB4F521B65B450071EA34 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		472CB4F721B660F50071EA34 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		82334D8CD8CA6C838F02C735 /* Pods-WebviewAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebviewAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WebviewAppTests/Pods-WebviewAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8833F1900CBBA8DD932BA604 /* Pods-WebviewAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebviewAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WebviewAppUITests/Pods-WebviewAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		B144B88176179B031E3ABCD8 /* Pods-WebviewApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WebviewApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WebviewApp/Pods-WebviewApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,10 +133,12 @@
 			children = (
 				4712438D21B51BEA003036E3 /* AppDelegate.swift */,
 				4712438F21B51BEA003036E3 /* ViewController.swift */,
+				472CB4F721B660F50071EA34 /* Key.swift */,
 				4712439121B51BEA003036E3 /* Main.storyboard */,
 				4712439421B51BEB003036E3 /* Assets.xcassets */,
 				4712439621B51BEB003036E3 /* LaunchScreen.storyboard */,
 				4712439921B51BEB003036E3 /* Info.plist */,
+				472CB4F521B65B450071EA34 /* Script.js */,
 			);
 			path = WebviewApp;
 			sourceTree = "<group>";
@@ -274,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4712439821B51BEB003036E3 /* LaunchScreen.storyboard in Resources */,
+				472CB4F621B65B450071EA34 /* Script.js in Resources */,
 				4712439521B51BEB003036E3 /* Assets.xcassets in Resources */,
 				4712439321B51BEA003036E3 /* Main.storyboard in Resources */,
 			);
@@ -388,6 +395,7 @@
 			files = (
 				4712439021B51BEA003036E3 /* ViewController.swift in Sources */,
 				4712438E21B51BEA003036E3 /* AppDelegate.swift in Sources */,
+				472CB4F821B660F50071EA34 /* Key.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
