@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/oingbong/Documents/CodeSquad/Level3/swift-webviewapp/WebviewApp/WebviewApp/Script.swift">
-   </FileRef>
-   <FileRef
       location = "group:WebviewApp.xcodeproj">
    </FileRef>
    <FileRef
