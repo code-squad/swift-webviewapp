@@ -51,3 +51,13 @@ if (popup != null) {
 ![Step3_1_After](CaptureImage/Step3_1_After.png)
 ![Step3_2_Before](CaptureImage/Step3_2_Before.png)
 ![Step3_2_After](CaptureImage/Step3_2_After.png)
+
+# Step4
+> Javascript 이벤트 핸들링
+
+### 작업
+1. `WKScriptMessageHandler` 사용 및 javascript -> swift 이벤트 처리
+2. `SFSafariViewController` 사용 및 WKWebview 대신 이벤트 처리
+
+### 첨부파일
+![Step4 Demo](CaptureImage/Step4Demo.gif)
