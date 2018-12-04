@@ -10,7 +10,10 @@ var menubar = document.querySelector('.slide-navi');
 menubar.addEventListener('click', function(){ scriptHandler("menuBar"); });
 
 function scriptHandler(message) {
-    event.preventDefault();
+    if (message == "searchBar") {
+        event.preventDefault();
+    }
+    
     try {
         webkit.messageHandlers.scriptHandler.postMessage(message);
     } catch(error) {
