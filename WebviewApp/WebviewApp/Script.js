@@ -4,12 +4,15 @@ if (popup != null) {
 }
 
 var search = document.querySelector('.btn-search');
-search.addEventListener('click', changeSearch );
+search.addEventListener('click', function(){ scriptHandler("searchBar"); });
 
-function changeSearch() {
+var menubar = document.querySelector('.slide-navi');
+menubar.addEventListener('click', function(){ scriptHandler("menuBar"); });
+
+function scriptHandler(message) {
     event.preventDefault();
     try {
-    webkit.messageHandlers.scriptHandler.postMessage("searchBar");
+        webkit.messageHandlers.scriptHandler.postMessage(message);
     } catch(error) {
         alert(error);
     }
