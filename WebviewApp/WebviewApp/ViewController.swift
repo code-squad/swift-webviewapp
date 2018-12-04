@@ -66,8 +66,8 @@ extension ViewController: WKScriptMessageHandler {
             present(safariVC, animated: true, completion: nil)
         }
         
-        if let body = message.body as? String, body == "menuBar" {
-            
+        if message.body is Array<Any> {
+            print(message.body)
         }
     }
 }
