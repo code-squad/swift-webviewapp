@@ -14,6 +14,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let stringURL = "https://m.shopping.naver.com"
+        guard let url = URL(string: stringURL) else { return }
+        let urlRequest = URLRequest(url: url)
+        uiWebView.loadRequest(urlRequest)
         // Do any additional setup after loading the view.
     }
 
