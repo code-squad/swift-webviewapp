@@ -130,6 +130,12 @@ fast tap을 포함한 모든 탭 이벤트에 대한 터치 지연을 없애기 
 
 > 출처 - 애플 공식 문서 [https://developer.apple.com/documentation/webkit/wkwebview](https://developer.apple.com/documentation/webkit/wkwebview)
 
+##### 맥 Safari 에서 Develop > Simulator 메뉴를 활용하면 웹에서 사이트를 불러오는 과정을 볼 수 있다.
+
+##### 그런데 Develop 메뉴가 그냥 있는것이 아니다. Safari 설정 -> 고급 -> 메뉴 막대에서 개발자용 메뉴 보기를 활성화해야한다.
+
+##### 그리고 아이폰 설정 -> Safari -> 고급 -> 웹속성도 활성화해주면 이제 맥 Safari Develop메뉴에서 웹속성을 볼 수 있다.
+
 ### 실행화면
 
 <img width="400" alt="step-02" src="https://user-images.githubusercontent.com/38850628/55886375-93b18080-5be6-11e9-9913-c1eddf2ef697.png">
