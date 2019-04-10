@@ -86,6 +86,10 @@ fast tap을 포함한 모든 탭 이벤트에 대한 터치 지연을 없애기 
 > [https://docs.kioskproapp.com/article/840-wkwebview-supported-features-known-issues](https://docs.kioskproapp.com/article/840-wkwebview-supported-features-known-issues)의 글을 번역한 글입니다.  
 > 건설적인 피드백 환영합니다!! :)
 
+### 실행화면
+
+<img width="400" alt="step-01" src="https://user-images.githubusercontent.com/38850628/55886374-93b18080-5be6-11e9-9d42-3a3d22c8b263.png">
+
 ## step-02. WKWebView와 웹킷
 
 ### 배운내용
@@ -125,3 +129,10 @@ fast tap을 포함한 모든 탭 이벤트에 대한 터치 지연을 없애기 
 <img width="762" alt="wkwebview03" src="https://user-images.githubusercontent.com/38850628/55879577-ec2e5100-5bd9-11e9-8616-7d23bab92c66.png">
 
 > 출처 - 애플 공식 문서 [https://developer.apple.com/documentation/webkit/wkwebview](https://developer.apple.com/documentation/webkit/wkwebview)
+
+### 실행화면
+
+<img width="400" alt="step-02" src="https://user-images.githubusercontent.com/38850628/55886375-93b18080-5be6-11e9-9913-c1eddf2ef697.png">
+
+<img width="762" alt="webProperty" src="https://user-images.githubusercontent.com/38850628/55886377-93b18080-5be6-11e9-8a2e-2d4cd97c9967.png">
+
