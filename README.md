@@ -86,3 +86,42 @@ fast tap을 포함한 모든 탭 이벤트에 대한 터치 지연을 없애기 
 > [https://docs.kioskproapp.com/article/840-wkwebview-supported-features-known-issues](https://docs.kioskproapp.com/article/840-wkwebview-supported-features-known-issues)의 글을 번역한 글입니다.  
 > 건설적인 피드백 환영합니다!! :)
 
+## step-02. WKWebView와 웹킷
+
+### 배운내용
+
+#### WKWebView
+
+##### iOS 8.0 and OS X 10.10에서 시작한다면 WKWebView를 사용해야한다. UIWebView or WebView를 사용하면 안된다.
+
+<img width="746" alt="wkwebview01" src="https://user-images.githubusercontent.com/38850628/55879574-eb95ba80-5bd9-11e9-8add-347bfd668b4b.png">
+
+##### `init(frame:configuration:)` 메소드로 새로운 WKWebView 객체를 만든 후 로드를 할 수 있다.
+
+##### `loadHTMLString(_:baseURL:)` 메소드로 로컬에 있는 HTML 파일들을 로딩할수 있다.
+
+##### `load(_:)` 메소드로 웹컨텐츠를 로딩할 수 있다.
+
+##### `stopLoading()` 메소드로 로딩을 멈출 수 있고, `isLoading` 프로퍼티로 웹뷰가 로딩중인지 알 수 있다.
+
+##### `WKUIDelegate` 프로토콜을 준수하는 객체를 delegate 프로퍼티에 set하는것으로 웹컨텐츠의 로딩을 추적할 수 있다.
+
+<img width="750" alt="wkwebview02" src="https://user-images.githubusercontent.com/38850628/55879576-eb95ba80-5bd9-11e9-9319-b86dd4937712.png">
+
+##### 사용자가 웹페이지의 히스토리를 앞뒤로 이동할 수 있도록 하려면 `goBack()` 과 `goForward()` 메서드를 사용하면 된다.
+
+##### `canGoBack` 과 `canGoForward` 프로퍼티들을 이용하여 앞이나 뒤로 이동할 수 없을때 해당 버튼을 비활성화 시킨다.
+
+##### 기본적으로 웹뷰는 컨텐츠에 나타나는 전화 번호를 전화 링크로 변환해준다.
+
+##### 전화 링크를 클릭하면 전화 앱이 켜지고 전화가 걸어진다.
+
+##### 이 기능을 해제하려면 `phoneNumber` flag가 포함되지 않은 `WKDataDetectorTypes` 비트필드로 `dataDetectorTypes`을 set하면 된다.
+
+##### `setMagnification(_:centeredAt:)` 을 사용하면 웹뷰 처음 표시될때의 웹 컨텐츠의 scale을 programmatically하게 설정할 수 있다.
+
+##### 그 후엔 유저가 제스쳐를 통해 scale을 변경할 수 있다.
+
+<img width="762" alt="wkwebview03" src="https://user-images.githubusercontent.com/38850628/55879577-ec2e5100-5bd9-11e9-8616-7d23bab92c66.png">
+
+> 출처 - 애플 공식 문서 [https://developer.apple.com/documentation/webkit/wkwebview](https://developer.apple.com/documentation/webkit/wkwebview)
