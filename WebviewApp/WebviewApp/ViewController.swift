@@ -10,8 +10,14 @@ import UIKit
 import WebKit
 
 class ViewController: UIViewController {
+
+    var wkWebView: WKWebView?
     
-    @IBOutlet weak var wkWebView: WKWebView!
+    override func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        wkWebView = WKWebView(frame: .zero, configuration: webConfiguration)
+        view = wkWebView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +25,7 @@ class ViewController: UIViewController {
         let stringURL = "https://m.shopping.naver.com"
         guard let url = URL(string: stringURL) else { return }
         let urlRequest = URLRequest(url: url)
-        wkWebView.load(urlRequest)
+        wkWebView?.load(urlRequest)
     }
 
 
