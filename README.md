@@ -136,6 +136,19 @@ fast tap을 포함한 모든 탭 이벤트에 대한 터치 지연을 없애기 
 
 ##### 그리고 아이폰 설정 -> Safari -> 고급 -> 웹속성도 활성화해주면 이제 맥 Safari Develop메뉴에서 웹속성을 볼 수 있다.
 
+##### WKWebView의 애플 공식문서 샘플 코드를 보면 loadView() 부분에 super를 호출하는 부분이 없습니다.
+##### 그래서 왜? 호출하지 않았을까 해서 loadView()의 공식문서를 살펴봤더니 
+##### `Your custom implementation of this method should not call super.` 라는 부분이 있었습니다. 
+##### 그래서 왜? 호출하지 말라고 했을까 생각해서 검색해보니
+##### 모르겠다. 그래서 애플에 물어보기로 했다.
+
+##### loadView()를 알아보면서 다른 override method에서도 super를 많이 호출하는데 그 이유를 알게 되었다.
+##### 예를들어 viewDidLoad()의 경우에는 아무것도 하지 않으므로 super를 호출할 필요가 없습니다.
+##### 하지만 상속구조를 변경할때 super를 호출하는 습관은 매우 좋은 습관이 됩니다.
+
+##### 그리고 초기화/ 셋업을 할때는 super를 먼저 호출하고
+##### 떼거나 정리할때는 super를 나중에 호출하는게 좋습니다.
+
 ### 실행화면
 
 <img width="400" alt="step-02" src="https://user-images.githubusercontent.com/38850628/55886375-93b18080-5be6-11e9-9913-c1eddf2ef697.png">
