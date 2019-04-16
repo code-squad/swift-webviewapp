@@ -158,3 +158,54 @@ fast tap을 포함한 모든 탭 이벤트에 대한 터치 지연을 없애기 
 
 <img width="762" alt="webProperty" src="https://user-images.githubusercontent.com/38850628/55886377-93b18080-5be6-11e9-8a2e-2d4cd97c9967.png">
 
+## step-03. 모바일 웹 페이지 로딩과 액션
+
+### 배운내용
+
+#### 네이티브에서 JS를 호출하는 방법을 배웠다.
+
+1. WKUserScript를 이용한 방법
+2. (WKWebView).evaluateJavaScript를 이용한 방법
+
+**WKUserScript를 사용한 방법**
+
+```swift
+let source = """
+var popup = document.querySelector('#list_area1');
+if (popup != null) {
+popup.style.display = 'none';
+}
+"""
+
+let script = WKUserScript(source: source,
+injectionTime: .atDocumentEnd,
+forMainFrameOnly: true)
+
+let contentController = WKUserContentController()
+contentController.addUserScript(script)
+
+let webConfiguration = WKWebViewConfiguration()
+webConfiguration.userContentController = contentController
+
+wkWebView = WKWebView(frame: .zero, configuration: webConfiguration)
+view = wkWebView
+```
+
+injectTime의 종류는
+
+- atDocumentStart
+- atDocumentEnd
+
+이렇게 2가지가 있는데 `atDocumentStart`는 DOM tree가 로드되기 시작할때 `atDocumentEnd`는 DOM tree가 로드된 후 타이밍을 나타낸다는 것을 배웠다.
+
+**evaluateJavaScript를 사용한 방법**
+
+```swift
+wkWebView?.evaluateJavaScript(script,
+completionHandler: nil)
+```
+
+
+### 실행화면
+
+<img width="400" alt="webProperty" src="https://user-images.githubusercontent.com/38850628/56191836-19f71800-6068-11e9-84e8-10f3c8465ebe.png">
