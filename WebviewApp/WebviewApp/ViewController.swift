@@ -34,8 +34,6 @@ class ViewController: UIViewController {
         
         wkWebView = WKWebView(frame: .zero, configuration: webConfiguration)
         view = wkWebView
-        wkWebView?.evaluateJavaScript(script,
-                                      completionHandler: nil)
     }
     
     override func viewDidLoad() {
