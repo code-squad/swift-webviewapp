@@ -14,7 +14,24 @@ class ViewController: UIViewController {
     var wkWebView: WKWebView?
     
     override func loadView() {
+        
+        let source = """
+        var popup = document.querySelector('#list_area1');
+        if (popup != null) {
+            popup.style.display = 'none';
+        }
+        """
+
+        let script = WKUserScript(source: source,
+                                  injectionTime: .atDocumentEnd,
+                                  forMainFrameOnly: true)
+        
+        let contentController = WKUserContentController()
+        contentController.addUserScript(script)
+        
         let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.userContentController = contentController
+        
         wkWebView = WKWebView(frame: .zero, configuration: webConfiguration)
         view = wkWebView
     }
@@ -27,10 +44,4 @@ class ViewController: UIViewController {
         let urlRequest = URLRequest(url: url)
         wkWebView?.load(urlRequest)
     }
-
-
-}
-
-extension ViewController: WKUIDelegate {
-    
 }
