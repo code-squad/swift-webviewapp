@@ -48,16 +48,15 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+    
+    func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
         let path = "/menu.nhn"
-        
-        if navigationAction.navigationType == .linkActivated,
-            let requestURL = navigationAction.request.url,
-            requestURL.absoluteString.hasSuffix(path) {
-            
-            decisionHandler(.cancel)
-        } else {
-            decisionHandler(.allow)
+        if let url = webView.url,
+            url.absoluteString.hasSuffix(path) {
+            let safariViewController = SFSafariViewController(url: url)
+            present(safariViewController,
+                    animated: true,
+                    completion: nil)
         }
     }
 }
