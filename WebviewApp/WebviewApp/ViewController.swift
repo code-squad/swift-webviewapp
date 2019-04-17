@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import SafariServices
 
 class ViewController: UIViewController {
 
@@ -52,7 +53,7 @@ extension ViewController: WKNavigationDelegate {
         
         if navigationAction.navigationType == .linkActivated,
             let requestURL = navigationAction.request.url,
-            requestURL.absoluteString.contains(path) {
+            requestURL.absoluteString.hasSuffix(path) {
             
             decisionHandler(.cancel)
         } else {
