@@ -17,19 +17,20 @@ class ViewController: UIViewController {
     
     override func loadView() {
         
-        let source = """
+        let displayNoneSource = """
         var popup = document.querySelector('#list_area1');
         if (popup != null) {
             popup.style.display = 'none';
         }
         """
-
-        let script = WKUserScript(source: source,
+        
+        let displayNoneScript = WKUserScript(source: displayNoneSource,
                                   injectionTime: .atDocumentEnd,
                                   forMainFrameOnly: true)
         
         let contentController = WKUserContentController()
-        contentController.addUserScript(script)
+        contentController.addUserScript(displayNoneScript)
+        contentController.add(self, name: handlerName)
         
         let webConfiguration = WKWebViewConfiguration()
         webConfiguration.userContentController = contentController
@@ -60,13 +61,35 @@ extension ViewController: WKNavigationDelegate {
                     completion: nil)
         }
     }
+    
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        
+        let menuListSource = """
+        function menuList() {
+        const menu = document.querySelector('.g_lnb_menu');
+        const menuLists = Array.from(menu.children);
+        let jsonArray = [];
+        for (const menuList of menuLists) {
+        let jsonInfo = {};
+        jsonInfo['title'] = menuList.innerText;
+        jsonInfo['urlString'] = menuList.firstElementChild.href;
+        jsonArray.push(jsonInfo);
+        }
+        return jsonArray;
+        }
+        webkit.messageHandlers.\(handlerName).postMessage(menuList());
+        """
+        
+        webView.evaluateJavaScript(menuListSource,
+                                   completionHandler: nil)
+    }
 }
 
 extension ViewController: WKScriptMessageHandler {
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == handlerName {
-            
+            print(message.body)
         }
     }
 }
