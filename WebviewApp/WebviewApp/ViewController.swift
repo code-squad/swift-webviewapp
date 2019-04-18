@@ -89,7 +89,7 @@ extension ViewController: WKScriptMessageHandler {
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == handlerName {
-            print(message.body)
+            print("Message from JS: ", message.body)
         }
     }
 }
