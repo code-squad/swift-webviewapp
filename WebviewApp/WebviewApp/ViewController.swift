@@ -13,6 +13,7 @@ import SafariServices
 class ViewController: UIViewController {
 
     var wkWebView: WKWebView?
+    private let handlerName = "callbackHandler"
     
     override func loadView() {
         
@@ -57,6 +58,15 @@ extension ViewController: WKNavigationDelegate {
             present(safariViewController,
                     animated: true,
                     completion: nil)
+        }
+    }
+}
+
+extension ViewController: WKScriptMessageHandler {
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if message.name == handlerName {
+            
         }
     }
 }
