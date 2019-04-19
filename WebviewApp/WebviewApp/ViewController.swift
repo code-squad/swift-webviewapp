@@ -16,15 +16,8 @@ class ViewController: UIViewController {
     private let handlerName = "callbackHandler"
     
     override func loadView() {
-        
-        let displayNoneSource = """
-        var popup = document.querySelector('#list_area1');
-        if (popup != null) {
-            popup.style.display = 'none';
-        }
-        """
-        
-        let displayNoneScript = WKUserScript(source: displayNoneSource,
+        let querySelector = "#list_area1"
+        let displayNoneScript = WKUserScript(source: JavaScriptSource.displayNone(of: querySelector),
                                   injectionTime: .atDocumentEnd,
                                   forMainFrameOnly: true)
         

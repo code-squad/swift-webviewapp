@@ -12,6 +12,7 @@
 		7D01B43A225C85D200471C5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D01B438225C85D200471C5F /* Main.storyboard */; };
 		7D01B43C225C85D300471C5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D01B43B225C85D300471C5F /* Assets.xcassets */; };
 		7D01B43F225C85D300471C5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D01B43D225C85D300471C5F /* LaunchScreen.storyboard */; };
+		7D875C8A2269963800F4FE08 /* JavaScriptSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D875C892269963800F4FE08 /* JavaScriptSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		7D01B43B225C85D300471C5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D01B43E225C85D300471C5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D01B440225C85D300471C5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7D875C892269963800F4FE08 /* JavaScriptSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			children = (
 				7D01B434225C85D200471C5F /* AppDelegate.swift */,
 				7D01B436225C85D200471C5F /* ViewController.swift */,
+				7D875C892269963800F4FE08 /* JavaScriptSource.swift */,
 				7D01B438225C85D200471C5F /* Main.storyboard */,
 				7D01B43B225C85D300471C5F /* Assets.xcassets */,
 				7D01B43D225C85D300471C5F /* LaunchScreen.storyboard */,
@@ -137,6 +140,7 @@
 			files = (
 				7D01B437225C85D200471C5F /* ViewController.swift in Sources */,
 				7D01B435225C85D200471C5F /* AppDelegate.swift in Sources */,
+				7D875C8A2269963800F4FE08 /* JavaScriptSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
