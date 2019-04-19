@@ -17,4 +17,22 @@ struct JavaScriptSource {
         }
         """
     }
+    
+    static func menuList(of querySelector: String, handlerName: String) -> String {
+        return """
+        function menuList() {
+        const menu = document.querySelector('\(querySelector)');
+        const menuLists = Array.from(menu.children);
+        let jsonArray = [];
+        for (const menuList of menuLists) {
+        let jsonInfo = {};
+        jsonInfo['title'] = menuList.innerText;
+        jsonInfo['urlString'] = menuList.firstElementChild.href;
+        jsonArray.push(jsonInfo);
+        }
+        return jsonArray;
+        }
+        webkit.messageHandlers.\(handlerName).postMessage(menuList());
+        """
+    }
 }

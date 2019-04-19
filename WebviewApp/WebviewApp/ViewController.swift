@@ -56,24 +56,9 @@ extension ViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        
-        let menuListSource = """
-        function menuList() {
-        const menu = document.querySelector('.g_lnb_menu');
-        const menuLists = Array.from(menu.children);
-        let jsonArray = [];
-        for (const menuList of menuLists) {
-        let jsonInfo = {};
-        jsonInfo['title'] = menuList.innerText;
-        jsonInfo['urlString'] = menuList.firstElementChild.href;
-        jsonArray.push(jsonInfo);
-        }
-        return jsonArray;
-        }
-        webkit.messageHandlers.\(handlerName).postMessage(menuList());
-        """
-        
-        webView.evaluateJavaScript(menuListSource,
+        let querySelector = ".g_lnb_menu"
+        webView.evaluateJavaScript(JavaScriptSource.menuList(of: querySelector,
+                                                             handlerName: handlerName),
                                    completionHandler: nil)
     }
 }
