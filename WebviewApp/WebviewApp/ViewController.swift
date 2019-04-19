@@ -89,7 +89,22 @@ extension ViewController: WKScriptMessageHandler {
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == handlerName {
-            print("Message from JS: ", message.body)
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: message.body,
+                                                       options: []),
+                let menuInfoArray = try? JSONDecoder().decode([MenuInfo].self, from: jsonData) else { return }
+            print("Message from JS: (")
+            for menuInfo in menuInfoArray {
+                print("     {")
+                print("     title = \"", menuInfo.title, "\";", separator: "")
+                print("     urlString = \"", menuInfo.urlString, "\";", separator: "")
+                print("  },")
+            }
+            print(")")
         }
     }
+}
+
+struct MenuInfo: Decodable {
+    let title: String
+    let urlString: String
 }
