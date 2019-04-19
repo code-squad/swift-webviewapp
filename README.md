@@ -209,3 +209,15 @@ completionHandler: nil)
 ### 실행화면
 
 <img width="400" alt="webProperty" src="https://user-images.githubusercontent.com/38850628/56191836-19f71800-6068-11e9-84e8-10f3c8465ebe.png">
+
+
+## step-04. 사파리 뷰컨트롤러
+
+### 배운내용
+
+
+### 실행화면
+
+<img width="400" alt="webProperty" src="https://user-images.githubusercontent.com/38850628/56403592-ff59b480-629c-11e9-849a-229ea86dfd22.png">
+<img width="400" alt="webProperty" src="https://user-images.githubusercontent.com/38850628/56403593-ff59b480-629c-11e9-9af1-879586b8bd42.png">
+
