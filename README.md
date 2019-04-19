@@ -215,6 +215,28 @@ completionHandler: nil)
 
 ### 배운내용
 
+#### **WKNavigationDelegate**에 대해서 배웠다.
+
+`func webView(WKWebView, didReceiveServerRedirectForProvisionalNavigation: WKNavigation!)`를 사용하면 웹뷰가 서버 리다이렉트를 수신한 타이밍에 작업을 할 수 있다.
+
+#### 자바스크립트를 이용하여 원하는 태그에 접근하여 원하는 데이터를 가져오는 방법을 배웠다.
+
+```javascript
+function menuList() {
+const menu = document.querySelector('.g_lnb_menu');
+const menuLists = Array.from(menu.children);
+let jsonArray = [];
+for (const menuList of menuLists) {
+let jsonInfo = {};
+jsonInfo['title'] = menuList.innerText;
+jsonInfo['urlString'] = menuList.firstElementChild.href;
+jsonArray.push(jsonInfo);
+}
+return jsonArray;
+}
+```
+
+#### SFSafariViewController를 이용하는 방법을 배웠다.
 
 ### 실행화면
 
