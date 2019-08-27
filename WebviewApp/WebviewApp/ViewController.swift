@@ -21,5 +21,22 @@ class ViewController: UIViewController, UIWebViewDelegate {
             webView.loadRequest(URLRequest(url: url))
         }
     }
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
+        print(#function)
+        return true
+    }
+    
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        print(#function)
+    }
+    
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        print(#function)
+    }
+    
+    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
+        print(#function)
+    }
 }
 
