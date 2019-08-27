@@ -24,6 +24,8 @@ class ViewController: UIViewController, UIWebViewDelegate {
     
     func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
         print(#function)
+        dump(request)
+        dump(navigationType)
         return true
     }
     
@@ -37,6 +39,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
     
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         print(#function)
+        dump(error)
     }
 }
 
