@@ -45,6 +45,9 @@ https://m.shopping.naver.com/
 __C.UIWebViewNavigationType
 
 ## 2019.08.27 16:03
+
+- UIWebView 를 WKWebView 으로 변경
+
 ![](/webview2-1.png)
 
 - 전체 사이트 로딩 현황을 확인
