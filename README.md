@@ -43,3 +43,13 @@ https://m.shopping.naver.com/
 
 - navigationType
 __C.UIWebViewNavigationType
+
+## 2019.08.27 16:03
+![](/webview2-1.png)
+
+- 전체 사이트 로딩 현황을 확인
+
+![](/webview2-2.png)
+
+- 사파리 Elements 탭에서 "최근 본 상품" 화면에 대한 div 태그를 찾아서 스타일을 바꿈
+
