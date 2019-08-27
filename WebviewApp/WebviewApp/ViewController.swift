@@ -8,13 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UIWebViewDelegate {
+    @IBOutlet weak var webView: UIWebView!
+    let url = URL(string: "https://m.shopping.naver.com")
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        webView.delegate = self
+        
+        if let url = url{
+            webView.loadRequest(URLRequest(url: url))
+        }
     }
-
-
 }
 
