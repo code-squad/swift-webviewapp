@@ -56,3 +56,8 @@ __C.UIWebViewNavigationType
 
 - 사파리 Elements 탭에서 "최근 본 상품" 화면에 대한 div 태그를 찾아서 스타일을 바꿈
 
+## 2019.08.27 16:03
+![](/webview3.png)
+
+- WKUserScript 와 evaluateJavaScript 을 이용해 자바스크립트를 실행시켜서 part_banner 제거
+ 
