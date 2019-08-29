@@ -14,15 +14,8 @@ class ContainerView: UIView, WKNavigationDelegate {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
-    
-        let contentController = WKUserContentController()
-        let scriptSource = "var popup = document.querySelector(`.part_banner`); if (popup != null) { popup.style.display = `none`; }"
-        let script = WKUserScript(source: scriptSource, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
-        contentController.addUserScript(script)
-        
-        let config = WKWebViewConfiguration()
-        config.userContentController = contentController
-        
+        let javaScriptSource = "var popup = document.querySelector(`.part_banner`); if (popup != null) { popup.style.display = `none`; }"
+        let config = makeWebViewConfig(javaScriptSource: javaScriptSource)
         webView = WKWebView(frame: self.bounds, configuration: config)
         if let webView = webView {
             addSubview(webView)
@@ -30,17 +23,28 @@ class ContainerView: UIView, WKNavigationDelegate {
         }
     }
     
-    func webViewLoadLink(url: URL){
+    func webViewLoad(url: URL){
         let request = URLRequest(url: url)
         webView!.load(request)
     }
     
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    internal func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         let scriptSource = "var popup = document.querySelector(`.part_banner`); if (popup != null) { popup.style.display = `none`; }"
         
         webView.evaluateJavaScript(scriptSource, completionHandler: { (object, error) in
             
         })
+    }
+    
+    private func makeWebViewConfig(javaScriptSource: String) -> WKWebViewConfiguration {
+        let contentController = WKUserContentController()
+        let script = WKUserScript(source: javaScriptSource, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
+        contentController.addUserScript(script)
+        
+        let config = WKWebViewConfiguration()
+        config.userContentController = contentController
+        
+        return config
     }
 }
 
