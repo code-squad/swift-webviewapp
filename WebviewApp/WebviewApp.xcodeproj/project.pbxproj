@@ -13,7 +13,7 @@
 		33B1CF362314E25E00D59886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33B1CF352314E25E00D59886 /* Assets.xcassets */; };
 		33B1CF392314E25E00D59886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 33B1CF372314E25E00D59886 /* LaunchScreen.storyboard */; };
 		33B1CF422315085A00D59886 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33B1CF412315085A00D59886 /* WebKit.framework */; };
-		33B1CF68231632F100D59886 /* containerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B1CF67231632F100D59886 /* containerView.swift */; };
+		33B1CF68231632F100D59886 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33B1CF67231632F100D59886 /* ContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		33B1CF382314E25E00D59886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		33B1CF3A2314E25E00D59886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		33B1CF412315085A00D59886 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		33B1CF67231632F100D59886 /* containerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = containerView.swift; sourceTree = "<group>"; };
+		33B1CF67231632F100D59886 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +66,7 @@
 				33B1CF352314E25E00D59886 /* Assets.xcassets */,
 				33B1CF372314E25E00D59886 /* LaunchScreen.storyboard */,
 				33B1CF3A2314E25E00D59886 /* Info.plist */,
-				33B1CF67231632F100D59886 /* containerView.swift */,
+				33B1CF67231632F100D59886 /* ContainerView.swift */,
 			);
 			path = WebviewApp;
 			sourceTree = "<group>";
@@ -151,7 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				33B1CF312314E25B00D59886 /* ViewController.swift in Sources */,
-				33B1CF68231632F100D59886 /* containerView.swift in Sources */,
+				33B1CF68231632F100D59886 /* ContainerView.swift in Sources */,
 				33B1CF2F2314E25B00D59886 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

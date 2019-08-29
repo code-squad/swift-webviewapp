@@ -1,5 +1,5 @@
 //
-//  containerView.swift
+//  ContainerView.swift
 //  WebviewApp
 //
 //  Created by joon-ho kil on 8/28/19.
@@ -9,8 +9,8 @@
 import UIKit
 import WebKit
 
-class containerView: UIView, WKNavigationDelegate {
-    override func draw(_ rect: CGRect) {
+class ContainerView: UIView, WKNavigationDelegate {
+    func setupView(){
         let contentController = WKUserContentController()
         let scriptSource = "var popup = document.querySelector(`.part_banner`); if (popup != null) { popup.style.display = `none`; }"
         let script = WKUserScript(source: scriptSource, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
