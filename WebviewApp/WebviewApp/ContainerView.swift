@@ -10,7 +10,11 @@ import UIKit
 import WebKit
 
 class ContainerView: UIView, WKNavigationDelegate {
-    func setupView(){
+    private var webView: WKWebView?
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    
         let contentController = WKUserContentController()
         let scriptSource = "var popup = document.querySelector(`.part_banner`); if (popup != null) { popup.style.display = `none`; }"
         let script = WKUserScript(source: scriptSource, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
@@ -19,13 +23,16 @@ class ContainerView: UIView, WKNavigationDelegate {
         let config = WKWebViewConfiguration()
         config.userContentController = contentController
         
-        let webView = WKWebView(frame: self.bounds, configuration: config)
-        
-        let url = URL(string: "https://m.shopping.naver.com")
-        let request = URLRequest(url: url!)
-        webView.load(request)
-        addSubview(webView)
-        webView.navigationDelegate = self
+        webView = WKWebView(frame: self.bounds, configuration: config)
+        if let webView = webView {
+            addSubview(webView)
+            webView.navigationDelegate = self
+        }
+    }
+    
+    func webViewLoadLink(url: URL){
+        let request = URLRequest(url: url)
+        webView!.load(request)
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
