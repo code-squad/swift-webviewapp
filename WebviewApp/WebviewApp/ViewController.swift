@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var containerView: ContainerView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        containerView.setupView()
+        containerView.webViewLoad(url: URL(string: "https://m.shopping.naver.com")!)
     }
 }
 
