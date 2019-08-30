@@ -39,6 +39,23 @@ class ContainerView: UIView, WKNavigationDelegate {
         })
     }
     
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if navigationAction.navigationType == .linkActivated  {
+            if let url = navigationAction.request.url, url.path.hasSuffix("menu.nhn") {
+                
+                print("menu 페이지가 뜰 때!")
+                decisionHandler(.cancel)
+                
+            } else {
+                print("Open it locally")
+                decisionHandler(.allow)
+            }
+        } else {
+            print("not a user click")
+            decisionHandler(.allow)
+        }
+    }
+    
     private func makeWebViewConfig(javaScriptSource: String) -> WKWebViewConfiguration {
         let contentController = WKUserContentController()
         let script = WKUserScript(source: javaScriptSource, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
