@@ -23,7 +23,10 @@ class ContainerView: UIView, WKNavigationDelegate {
         }
     }
     
-    func webViewLoad(url: URL){
+    func webViewLoad(url input: String){
+        guard let url = URL(string: input) else {
+            return
+        }
         let request = URLRequest(url: url)
         webView!.load(request)
     }
