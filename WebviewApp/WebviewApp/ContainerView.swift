@@ -8,8 +8,9 @@
 
 import UIKit
 import WebKit
+import SafariServices
 
-class ContainerView: UIView, WKNavigationDelegate {
+class ContainerView: UIView, WKNavigationDelegate, SFSafariViewControllerDelegate {
     private var webView: WKWebView?
     
     required init(coder aDecoder: NSCoder) {
@@ -40,20 +41,13 @@ class ContainerView: UIView, WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-        if navigationAction.navigationType == .linkActivated  {
-            if let url = navigationAction.request.url, url.path.hasSuffix("menu.nhn") {
-                
-                print("menu 페이지가 뜰 때!")
+        if navigationAction.navigationType == .linkActivated, let url = navigationAction.request.url, url.path.hasSuffix("menu.nhn") {
+                safariWebViewPresent(url: url)
                 decisionHandler(.cancel)
-                
-            } else {
-                print("Open it locally")
-                decisionHandler(.allow)
-            }
-        } else {
-            print("not a user click")
-            decisionHandler(.allow)
+                return
         }
+        
+        decisionHandler(.allow)
     }
     
     private func makeWebViewConfig(javaScriptSource: String) -> WKWebViewConfiguration {
@@ -65,6 +59,19 @@ class ContainerView: UIView, WKNavigationDelegate {
         config.userContentController = contentController
         
         return config
+    }
+    
+    func safariWebViewPresent(url: URL) {
+        let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
+        vc.delegate = self
+        
+        if var topController = UIApplication.shared.keyWindow?.rootViewController {
+            while let presentedViewController = topController.presentedViewController {
+                topController = presentedViewController
+            }
+            
+            topController.present(vc, animated: true, completion: nil)
+        }
     }
 }
 
