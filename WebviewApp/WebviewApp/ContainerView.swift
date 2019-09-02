@@ -42,9 +42,9 @@ class ContainerView: UIView, WKNavigationDelegate, SFSafariViewControllerDelegat
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if navigationAction.navigationType == .linkActivated, let url = navigationAction.request.url, url.path.hasSuffix("menu.nhn") {
-                safariWebViewPresent(url: url)
-                decisionHandler(.cancel)
-                return
+            safariWebViewPresent(url: url)
+            decisionHandler(.cancel)
+            return
         }
         
         decisionHandler(.allow)
@@ -74,5 +74,6 @@ class ContainerView: UIView, WKNavigationDelegate, SFSafariViewControllerDelegat
         }
     }
 }
+
 
 
