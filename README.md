@@ -61,3 +61,70 @@ __C.UIWebViewNavigationType
 
 - WKUserScript 와 evaluateJavaScript 을 이용해 자바스크립트를 실행시켜서 part_banner 제거
  
+ ## 2019.09.03 13:29
+  
+ ![](/webview3-1.png)
+ 
+ - 메뉴 버튼 클릭 시 사파리 뷰컨트롤러로 뷰 띄우도록 적용
+ 
+ ![](/webview3-2.png)
+ 
+ - javascript 를 이용해서 최상위 메뉴의 이름과 url 을 가져와서 로그 출력
+
+받아온 메뉴 정보
+▿ WebviewApp.Menus
+▿ menus: 18 elements
+▿ WebviewApp.Menu
+- text: "아울렛윈도"
+- urlString: "https://m.shopping.naver.com/outlet/home"
+▿ WebviewApp.Menu
+- text: "스타일윈도"
+- urlString: "https://m.shopping.naver.com/style/style/home"
+▿ WebviewApp.Menu
+- text: "디자이너윈도"
+- urlString: "https://m.swindow.naver.com/designer/home"
+▿ WebviewApp.Menu
+- text: "뷰티윈도"
+- urlString: "https://m.swindow.naver.com/beauty/home"
+▿ WebviewApp.Menu
+- text: "리빙윈도"
+- urlString: "https://m.shopping.naver.com/living"
+▿ WebviewApp.Menu
+- text: "푸드윈도"
+- urlString: "https://m.shopping.naver.com/fresh"
+▿ WebviewApp.Menu
+- text: "키즈윈도"
+- urlString: "https://m.swindow.naver.com/kids/home"
+▿ WebviewApp.Menu
+- text: "펫윈도"
+- urlString: "https://m.swindow.naver.com/pet/home"
+▿ WebviewApp.Menu
+- text: "플레이윈도"
+- urlString: "https://m.swindow.naver.com/play/home"
+▿ WebviewApp.Menu
+- text: "아트윈도"
+- urlString: "https://m.shopping.naver.com/art/home"
+▿ WebviewApp.Menu
+- text: "핫딜"
+- urlString: "https://m.shopping.naver.com/hotdeal/m/index.nhn"
+▿ WebviewApp.Menu
+- text: "선물"
+- urlString: "https://m.shopping.naver.com/gift/home"
+▿ WebviewApp.Menu
+- text: "해외직구"
+- urlString: "https://m.swindow.naver.com/foreign/home"
+▿ WebviewApp.Menu
+- text: "toptop"
+- urlString: "https://toptop.naver.com/"
+▿ WebviewApp.Menu
+- text: "기획전"
+- urlString: "https://m.shopping.naver.com/plan2/m/index.nhn"
+▿ WebviewApp.Menu
+- text: "BEST"
+- urlString: "https://m.shopping.naver.com/best/home"
+▿ WebviewApp.Menu
+- text: "셀렉티브"
+- urlString: "https://selective.naver.com/discover?shp"
+▿ WebviewApp.Menu
+- text: "Aitems"
+- urlString: "https://m.shopping.naver.com/aitems"
