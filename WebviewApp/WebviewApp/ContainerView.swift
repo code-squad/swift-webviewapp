@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import SafariServices
 
-class ContainerView: UIView, WKNavigationDelegate, SFSafariViewControllerDelegate, WKScriptMessageHandler {
+class ContainerView: UIView, WKNavigationDelegate, WKScriptMessageHandler {
     private var webView: WKWebView?
     
     required init(coder aDecoder: NSCoder) {
@@ -74,8 +74,7 @@ class ContainerView: UIView, WKNavigationDelegate, SFSafariViewControllerDelegat
     }
     
     func safariWebViewPresent(url: URL) {
-        let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
-        vc.delegate = self
+        let vc = SFSafariViewController(url: url)
         
         if var topController = UIApplication.shared.keyWindow?.rootViewController {
             while let presentedViewController = topController.presentedViewController {
@@ -87,10 +86,7 @@ class ContainerView: UIView, WKNavigationDelegate, SFSafariViewControllerDelegat
     }
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        
-        print(message.body)
+        let menus = Menus(body: message.body)
+        dump(menus)
     }
 }
-
-
-
