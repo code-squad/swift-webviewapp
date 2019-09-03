@@ -15,10 +15,10 @@ struct Menus {
         if let array = body as? [Any] {
             for objects in array {
                 let object = objects as? [Any]
-                guard let text = object?.first else {
+                guard let urlString = object?.first else {
                     continue
                 }
-                guard let urlString = object?[1] else {
+                guard let text = object?[1] else {
                     continue
                 }
                 menus.append(Menu(text: text as! String, urlString: urlString as! String))
