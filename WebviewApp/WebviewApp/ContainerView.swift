@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 import SafariServices
 
-class ContainerView: UIView, WKNavigationDelegate, SFSafariViewControllerDelegate {
+class ContainerView: UIView, WKNavigationDelegate, SFSafariViewControllerDelegate, WKScriptMessageHandler {
     private var webView: WKWebView?
     
     required init(coder aDecoder: NSCoder) {
@@ -33,10 +33,16 @@ class ContainerView: UIView, WKNavigationDelegate, SFSafariViewControllerDelegat
     }
     
     internal func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        let scriptSource = "var popup = document.querySelector(`.part_banner`); if (popup != null) { popup.style.display = `none`; }"
+        var scriptSource = "var popup = document.querySelector(`.part_banner`); if (popup != null) { popup.style.display = `none`; }"
         
         webView.evaluateJavaScript(scriptSource, completionHandler: { (object, error) in
             
+        })
+        scriptSource = "const aTagList = document.querySelectorAll(`[role=\"presentation\"] + li:not([ext-mode]) a`)"
+       webView.evaluateJavaScript(scriptSource, completionHandler: { (object, error) in })
+        
+        webView.evaluateJavaScript("window.webkit.messageHandlers.jsHandler.postMessage([ ... aTagList].map(el=>[el[\"href\"], el.textContent]));", completionHandler: { (object, error) in
+        
         })
     }
     
@@ -49,13 +55,17 @@ class ContainerView: UIView, WKNavigationDelegate, SFSafariViewControllerDelegat
         if let url = navigationAction.request.url, url.path.hasSuffix("menu.nhn") {
             safariWebViewPresent(url: url)
             decisionHandler(.cancel)
+            return
         }
+        
+        decisionHandler(.allow)
     }
     
     private func makeWebViewConfig(javaScriptSource: String) -> WKWebViewConfiguration {
         let contentController = WKUserContentController()
         let script = WKUserScript(source: javaScriptSource, injectionTime: .atDocumentEnd, forMainFrameOnly: true)
         contentController.addUserScript(script)
+        contentController.add(self, name: "jsHandler")
         
         let config = WKWebViewConfiguration()
         config.userContentController = contentController
@@ -74,6 +84,11 @@ class ContainerView: UIView, WKNavigationDelegate, SFSafariViewControllerDelegat
             
             topController.present(vc, animated: true, completion: nil)
         }
+    }
+    
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        
+        print(message.body)
     }
 }
 
