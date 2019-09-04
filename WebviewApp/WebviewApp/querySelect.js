@@ -1,0 +1,1 @@
+var popup = document.querySelector(`.part_banner`); if (popup != null) { popup.style.display = `none`; }; const aTagList = document.querySelectorAll(`[role="presentation"] + li:not([ext-mode]) a`); window.webkit.messageHandlers.jsHandler.postMessage([ ... aTagList].map(el=>[el['href'], el.textContent]));
