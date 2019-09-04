@@ -33,13 +33,9 @@ class ContainerView: UIView, WKNavigationDelegate, WKScriptMessageHandler {
     }
     
     internal func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        var scriptSource = "var popup = document.querySelector(`.part_banner`); if (popup != null) { popup.style.display = `none`; }"
-        webView.evaluateJavaScript(scriptSource, completionHandler: nil)
-        
-        scriptSource = "const aTagList = document.querySelectorAll(`[role=\"presentation\"] + li:not([ext-mode]) a`)"
-        webView.evaluateJavaScript(scriptSource, completionHandler: nil)
-        
-        scriptSource = "window.webkit.messageHandlers.jsHandler.postMessage([ ... aTagList].map(el=>[el[\"href\"], el.textContent]));"
+        guard let scriptPath = Bundle.main.path(forResource: "querySelect", ofType: "js"),
+            var scriptSource = try? String(contentsOfFile: scriptPath) else { return }
+        scriptSource.removeLast()
         webView.evaluateJavaScript(scriptSource, completionHandler: nil)
     }
     
