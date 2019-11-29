@@ -61,11 +61,11 @@ Sent if a web view failed to load a frame.
 
 
 
-#### 
+<br>
 
 #### WKWebView 와 UIWebView 의 차이는  엔진에서 차이를 보입니다.
 
-
+<br>
 
 ## WKWebView's Advantages
 
@@ -131,7 +131,9 @@ Sent if a web view failed to load a frame.
 
 
 
+---
 
+<br>
 
 ## Issues
 
@@ -149,7 +151,7 @@ Sent if a web view failed to load a frame.
 
   동일한 출처를 가져야하므로 로컬파일을 가져오는 요청은 거절됩니다.
 
-  
+  <br>
 
 ### Does not support 'Accept Cookies' setting
 
@@ -173,13 +175,13 @@ Sent if a web view failed to load a frame.
 
   캐시 소스와 서버 리다이렉션 이벤트를 지원하지 안습니다.
 
-  
+  <br>
 
 ### HTML5 local storage clears when app is exited
 
 HTML5 로컬스토리지가 앱이 재시작되거나 꺼지면 비워집니다.
 
-
+<br>
 
 ### Does not support logging of WebKit requests
 
