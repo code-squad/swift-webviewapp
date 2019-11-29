@@ -57,3 +57,19 @@ class MyUIWebView: UIWebView {
     }
     
 }
+
+// MARK: - UIWebView.NavigationType
+
+extension UIWebView.NavigationType: CustomStringConvertible {
+    
+    public var description: String {
+        switch self {
+        case .linkClicked: return "linkClicked"
+        case .formSubmitted: return "formSubmitted"
+        case .backForward: return "backFˆorward"
+        case .reload: return "reload"
+        case .formResubmitted: return "formResubmitted"
+        case .other: return "other"
+        }
+    }
+}
