@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+enum Naver {
+    enum Shopping {
+        static let url = URL(string: "https://m.shopping.naver.com")!
+    }
+}
