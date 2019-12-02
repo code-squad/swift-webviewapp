@@ -14,7 +14,7 @@ import SnapKit
 class WebViewController: UIViewController {
     
     // MARK: - UI
-    
+    //    let configure = WKWebViewConfiguration()
     private let webView = WKWebView(frame: .zero)
     
     // MARK: - Life Cycle
@@ -32,6 +32,15 @@ class WebViewController: UIViewController {
     private func requestContents(from url: URL) {
         let request = URLRequest(url: url)
         webView.load(request)
+        webView.configuration.userContentController.addUserScript(.removeBanner)
+        webView.configuration.do {
+            // 사용자 대신 일을 해주는 소프트웨어 OS + 브라우저
+            print($0.applicationNameForUserAgent)
+            print($0.preferences)
+            print($0.processPool)
+            print($0.userContentController)
+            print($0.websiteDataStore.httpCookieStore)
+        }
     }
 }
 

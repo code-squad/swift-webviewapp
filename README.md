@@ -187,3 +187,73 @@ HTML5 로컬스토리지가 앱이 재시작되거나 꺼지면 비워집니다.
 
 WKWebView는 요청을 하고, 컨텐트 렌더링처리는 하지 않기 때문에, 요청을 로그할 수는 없습니다.
 
+
+
+<br>
+
+<br>
+
+## STEP2
+
+## 
+
+#### WKWebViewConfiguration
+
+|          **Name**           |        **Type**         |                         Description                          |                  Example                   |
+| :-------------------------: | :---------------------: | :----------------------------------------------------------: | :----------------------------------------: |
+| applicationNameForUserAgent |         String          |              사용자 대신 일을 해주는 소프트웨어              |                OS + browser                |
+|         preferences         |      WKPreferences      |           WKWebView의 기본설정을 캡슐화해놓은 객체           |       자바스크립트 실행가능 여부 등        |
+|         processPool         |      WKProcessPool      |            WKWebView 생성시에 지정한 프로세스 풀             |                     -                      |
+|    userContentController    | WKUserContentController | WKWebView에 유저가 작성한 자바스크립트 코드를 주입하거나 메시지를 보내는 방법을 제공하는 객체 |                     -                      |
+|      websiteDataStore       |   WKWebsiteDataStore    | 웹 사이트에서 사용되는 다양한 형태의 데이터를 표현하는 객체  | 데이터 캐시, 파일 캐시, 쿠키, 로컬스토리지 |
+
+### WKNavigationAction
+
+네이게이션을 야기하는 액션의 정보를 포함하는 객체
+
+|    **Name**    |     **Type**     |                    Description                    |
+| :------------: | :--------------: | :-----------------------------------------------: |
+| navigationType | WKNavigationType |         네비게이션을 발생시킨 액션의 종류         |
+|  sourceFrame   |   WKFrameInfo    |           네비게이션을 요청하는 프레임            |
+|  targetFrame   |   WKFrameInfo    | 네비게이션이 도착지 프레임, 새로운 윈도우라면 nil |
+|    request     |   NSURLRequest   |                네비게이션 요청객체                |
+
+#### WKNavigationResponse
+
+|    **Name**     |   **Type**    |                     Description                      |
+| :-------------: | :-----------: | :--------------------------------------------------: |
+|    response     | NSURLResponse |                 네비게이션 요청객체                  |
+| isForMainFrame  |     Bool      | 네비게이션된 프레임이 메인 프레임인지  알려주는 bool |
+| canShowMIMEType |     Bool      |   MIME 타입을 디스플레이 할지 여부를 표현하는 bool   |
+
+
+
+#### User Scripts
+
+- 스크립트 주입 시점 - `WKUserScriptInjectionTime`
+
+- - Document Start 
+
+    - ​	DOM 생성후 다른 컨텐트는 로드하기 전에 실행
+
+  - Document End
+
+    - ​	웹 컨텐트 로드 끝난 후, 별도의 서브 리소스를 로드하기 전에 실행
+
+    
+
+- 
+
+- - All Frames
+  - Main frame only
+
+- **어떤 용도로 활용하기 좋은가**
+- - Document 변경하기
+  - 이벤트 처리
+  - 리소스 불러오기
+  - 앱과 통신하기
+
+
+
+<img width="494" alt="스크린샷 2019-12-02 오후 6 51 16" src="https://user-images.githubusercontent.com/39197978/69953583-e5739600-153c-11ea-9b02-ba7dc05ecd1e.png">
+
