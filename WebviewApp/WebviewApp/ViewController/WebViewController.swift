@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 import Then
 import SnapKit
 
@@ -14,7 +15,7 @@ class WebViewController: UIViewController {
     
     // MARK: - UI
     
-    private let webView = MyUIWebView(frame: .zero)
+    private let webView = WKWebView(frame: .zero)
     
     // MARK: - Life Cycle
     
@@ -30,7 +31,7 @@ class WebViewController: UIViewController {
     
     private func requestContents(from url: URL) {
         let request = URLRequest(url: url)
-        webView.loadRequest(request)
+        webView.load(request)
     }
 }
 
@@ -42,7 +43,8 @@ extension WebViewController {
             $0.addSubview(webView)
         }
         webView.do {
-            $0.delegate = self
+            $0.uiDelegate = self
+            $0.navigationDelegate = self
         }
     }
     
@@ -55,29 +57,9 @@ extension WebViewController {
 
 // MARK: - UIWebViewDelegate
 
-extension WebViewController: UIWebViewDelegate {
-    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebView.NavigationType) -> Bool {
-        print()
-        print(request)
-        print(navigationType)
-        print(#function)
-        return true
-    }
+extension WebViewController: WKUIDelegate {
     
-    func webViewDidStartLoad(_ webView: UIWebView) {
-        print()
-        print(webView.request?.url)
-        print(#function)
-    }
-    
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        print()
-        print(#function)
-    }
-    
-    func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
-        print()
-        print(#function)
-    }
+}
+extension WebViewController: WKNavigationDelegate {
     
 }
